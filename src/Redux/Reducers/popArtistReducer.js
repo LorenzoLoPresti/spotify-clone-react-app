@@ -3,7 +3,7 @@ import { POP_ARTIST_FETCH } from "../Actions";
 
 const initialState = {
   popArtistList: [],
-  popArtistFetch: [],
+  popArtistFetch: null,
   loading: true,
 };
 

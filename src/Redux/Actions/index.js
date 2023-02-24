@@ -5,6 +5,7 @@ export const ROCK_ARTIST_FETCH = "ROCK_ARTIST_FETCH";
 export const POP_ARTIST_FETCH = "POP_ARTIST_FETCH";
 export const HIP_HOP_ARTIST_FETCH = "HIP_HOP_ARTIST_FETCH";
 
+// LISTE ARTISTI
 export const artistListAction = (artistList) => {
   return { type: ARTIST_LIST, payload: artistList };
 };
@@ -15,6 +16,7 @@ export const hipHopArtistListAction = (artistList) => {
   return { type: HIP_HOP_ARTIST_LIST, payload: artistList };
 };
 
+// ACTION PER I DISPATCH NELLA FETCH
 export const artistRockFetchAction = (artistList) => {
   return { type: ROCK_ARTIST_FETCH, payload: artistList };
 };
@@ -25,6 +27,8 @@ export const artistPopFetchAction = (artistList) => {
 export const artisthipHopFetchAction = (artistList) => {
   return { type: HIP_HOP_ARTIST_FETCH, payload: artistList };
 };
+
+// FETCH
 
 export const artistFetchFunctionAction = (artist, genreFetch) => {
   return async (dispatch, getState) => {

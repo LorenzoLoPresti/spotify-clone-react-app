@@ -3,17 +3,17 @@ import { HIP_HOP_ARTIST_FETCH } from "../Actions";
 
 const initialState = {
   hipHopArtistList: [],
-  hipHopArtistFetch: [],
+  hipHopArtistFetch: null,
   loading: true,
 };
 
 export const hipHopArtistReducer = (state = initialState, action) => {
   switch (action.type) {
     case HIP_HOP_ARTIST_LIST:
-      return { ...state, popArtistList: action.payload };
+      return { ...state, hipHopArtistList: action.payload };
 
     case HIP_HOP_ARTIST_FETCH:
-      return { ...state, popArtistFetch: action.payload };
+      return { ...state, hipHopArtistFetch: action.payload };
 
     case "LOADING_ON":
       return { ...state, loading: true };

@@ -3,7 +3,7 @@ import { ROCK_ARTIST_FETCH } from "../Actions";
 
 const initialState = {
   rockArtistList: [],
-  rockArtistFetch: [],
+  rockArtistFetch: null,
   loading: true,
 };
 
