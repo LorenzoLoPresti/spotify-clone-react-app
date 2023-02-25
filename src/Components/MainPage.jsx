@@ -20,8 +20,10 @@ import {
 import { useSelector } from "react-redux";
 
 const MainPage = () => {
-  const loading = useSelector((state) => state.rock.loading);
+  const dispatch = useDispatch();
 
+  // SLICE ROCK
+  // const loading = useSelector((state) => state.rock.loading);
   const rockArtistList1 = useSelector((state) => state.rock.rockArtistFetch1);
   const rockArtistList2 = useSelector((state) => state.rock.rockArtistFetch2);
   const rockArtistList3 = useSelector((state) => state.rock.rockArtistFetch3);
@@ -33,6 +35,7 @@ const MainPage = () => {
     rockArtistList4,
   ];
 
+  // SLICE POP
   const popArtistList1 = useSelector((state) => state.pop.popArtistFetch1);
   const popArtistList2 = useSelector((state) => state.pop.popArtistFetch2);
   const popArtistList3 = useSelector((state) => state.pop.popArtistFetch3);
@@ -44,6 +47,7 @@ const MainPage = () => {
     popArtistList4,
   ];
 
+  // SLICE HIP HOP
   const hipHopArtistList1 = useSelector(
     (state) => state.hipHop.hipHopArtistFetch1
   );
@@ -63,8 +67,7 @@ const MainPage = () => {
     hipHopArtistList4,
   ];
 
-  const dispatch = useDispatch();
-
+  // ARRAY ARITISTI
   let rockArtists = [
     "queen",
     "u2",
@@ -87,11 +90,12 @@ const MainPage = () => {
 
   let hipHopArtists = ["eminem", "snoopdogg", "lilwayne", "drake", "kanyewest"];
 
+  // FUNZIONE RANDOM
   const random = (artistList) => {
     let randomArtists = [];
     while (randomArtists.length < 4) {
       // pushes elements inside the array until it has 4 strings
-      let artist = artistList[Math.floor(Math.random() * rockArtists.length)]; // select an element from the array with an index between 0 and 7
+      let artist = artistList[Math.floor(Math.random() * artistList.length)]; // select an element from the array with an index between 0 and 7
       if (!randomArtists.includes(artist)) {
         // checks if the artist is not already present in the array
         randomArtists.push(artist); // pushes the artist in the array
@@ -101,6 +105,7 @@ const MainPage = () => {
     return randomArtists;
   };
 
+  //STATO
   const [randomRockArtist, setRandomRockArtist] = useState(random(rockArtists));
   const [randomPopArtist, setRandomPopArtist] = useState(random(popArtists));
   const [randomHipHopArtist, setRandomHipHopArtist] = useState(
@@ -174,30 +179,34 @@ const MainPage = () => {
         </Col>
       </Row>
       <Col xs={10}>
-        <Row xl={4}>
+        <Row>
           <h2 className="text-light pt-5 ">{"Rock Classic"}</h2>
         </Row>
-        <Row className="text-light py-3">
+        <Row xl={4} className="text-light py-3 ">
           {rockArtistListArray.map((element, index) => {
             return (
               <SingleAlbum list={element} index={index} key={"sono" + index} />
             );
           })}
         </Row>
-        <Row xl={4}>
+        <Row>
           <h2 className="text-light pt-5 ">{"Pop Culture"}</h2>
         </Row>
-        <Row className="text-light py-3">
+        <Row xl={4} className="text-light py-3 ">
           {popArtistListArray.map((element, index) => {
             return (
               <SingleAlbum list={element} index={index} key={"sono" + index} />
             );
           })}
         </Row>
-        <Row xl={4}>
+        <Row>
           <h2 className="text-light pt-5 ">{"Hip Hop"}</h2>
         </Row>
-        <Row className="text-light py-3">
+        <Row
+          xl={4}
+          className="text-light py-3"
+          style={{ marginBottom: "7rem" }}
+        >
           {hipHopArtistListArray.map((element, index) => {
             return (
               <SingleAlbum list={element} index={index} key={"sono" + index} />

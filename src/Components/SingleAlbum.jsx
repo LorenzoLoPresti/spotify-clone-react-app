@@ -12,13 +12,13 @@ const SingleAlbum = ({ list }) => {
         </Col>
       )) || (
         <>
-          <Col className="text-center">
+          <Col className="text-center mainPage">
             <img src={list && list.data[0].album.cover_big} alt="" />
-            <p href="" className="d-block">
-              {list && list?.data[0]?.album.title}
+            <p className="d-block">
+              {list && "Album: " + list?.data[0]?.album.title}
             </p>
             <p href="" className="d-block">
-              {list && list?.data[0]?.artist.name}
+              {list && "Artist: " + list?.data[0]?.artist.name}
             </p>
           </Col>
         </>

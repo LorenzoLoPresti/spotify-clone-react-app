@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Container,
   Row,
@@ -8,9 +9,16 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/logo/logo.png";
+import { SEARCH_ON } from "../Redux/Actions";
 
 const SideBarComponent = () => {
+  // const [search, setSearch] = useState("");
+  const searchValue = useSelector((state) => state.search.searchValue);
+  const dispatch = useDispatch();
+  // console.log("stefano pls", search);
+  console.log("stefano", searchValue);
   return (
     <Col xs={2} className="d-none d-md-block">
       <Navbar
@@ -28,12 +36,20 @@ const SideBarComponent = () => {
           >
             <NavLink className="px-2 py-2 sidebarLink">Home</NavLink>
             <NavLink className="px-2 py-2 sidebarLink">Your Library</NavLink>
-            <Form className="d-flex mt-3">
+            <div className="d-flex mt-3">
               <input
                 type="text"
                 style={{ width: "80%" }}
                 placeholder="Search"
                 className="px-2"
+                value={searchValue}
+                onChange={(e) => {
+                  dispatch({
+                    type: SEARCH_ON,
+                    payload: e.target.value,
+                  });
+                  // setSearch(e.target.value);
+                }}
               />
               <Button
                 variant="black"
@@ -43,10 +59,18 @@ const SideBarComponent = () => {
                   borderRadius: "2px",
                   fontSize: "0.9rem",
                 }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch({
+                    type: SEARCH_ON,
+                    payload: searchValue,
+                  });
+                  console.log(searchValue);
+                }}
               >
                 GO
               </Button>
-            </Form>
+            </div>
           </Navbar.Collapse>
         </Container>
         <Container className="flex-column">
@@ -70,11 +94,13 @@ const SideBarComponent = () => {
               borderRadius: "20px",
             }}
           >
-            Log in
+            Login
           </Button>
-          <div className="d-flex mb-3">
-            <NavLink className="me-3">Cookie Policy</NavLink>
-            <NavLink>Privacy</NavLink>
+          <div className="d-flex mb-4">
+            <NavLink className="me-3" style={{ color: "rgb(145, 145, 145)" }}>
+              Cookie Policy
+            </NavLink>
+            <NavLink style={{ color: "rgb(145, 145, 145)" }}>Privacy</NavLink>
           </div>
         </Container>
       </Navbar>

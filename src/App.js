@@ -3,6 +3,7 @@ import "./App.css";
 import { Container, Row } from "react-bootstrap";
 import SideBarComponent from "./Components/SideBarComponent";
 import MainPage from "./Components/MainPage";
+import PlayerComponent from "./Components/PlayerComponent";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <SideBarComponent />
           <MainPage />
         </Row>
+        <PlayerComponent />
       </Container>
     </div>
   );
