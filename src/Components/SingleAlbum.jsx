@@ -18,9 +18,11 @@ const SingleAlbum = ({ list }) => {
             <Link to={"/details/" + list?.album.id}>
               <p className="d-block">{list && "Album: " + list?.album.title}</p>
             </Link>
-            <p href="" className="d-block">
-              {list && "Artist: " + list?.artist.name}
-            </p>
+            <Link to={"/artist/" + list?.artist.name}>
+              <p className="d-block">
+                {list && "Artist: " + list?.artist.name}
+              </p>
+            </Link>
           </Col>
         </>
       )}

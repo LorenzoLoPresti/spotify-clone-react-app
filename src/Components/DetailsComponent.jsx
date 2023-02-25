@@ -83,15 +83,15 @@ const DetailsComponents = () => {
               <div className="col-md-10 mb-5" id="trackList">
                 {fetchResult &&
                   fetchResult?.tracks?.data?.map((element, index) => (
-                    <div class="py-3 trackHover">
+                    <div className="py-3 trackHover" key={"track" + index}>
                       <a
                         href="#"
-                        class="card-title trackHover px-3"
+                        className="card-title trackHover px-3"
                         style={{ color: "white" }}
                       >
                         {element.title}
                       </a>
-                      <small class="duration" style={{ color: "white" }}>
+                      <small className="duration" style={{ color: "white" }}>
                         {durationConverter(element.duration)}
                       </small>
                     </div>

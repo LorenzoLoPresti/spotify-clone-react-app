@@ -6,6 +6,7 @@ import MainPage from "./Components/MainPage";
 import PlayerComponent from "./Components/PlayerComponent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DetailsComponents from "./Components/DetailsComponent";
+import ArtistPageComponent from "./Components/ArtistPageComponent";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Routes>
               <Route path="/" element={<MainPage />} />
               <Route path="/details/:list" element={<DetailsComponents />} />
+              <Route path="/artist/:artist" element={<ArtistPageComponent />} />
             </Routes>
           </Row>
           <PlayerComponent />

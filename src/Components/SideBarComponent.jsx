@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Container,
   Row,
@@ -22,6 +22,7 @@ const SideBarComponent = () => {
   const searchValue = useSelector((state) => state.search.searchValue);
   const searchArray = useSelector((state) => state.search.searchArray);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // console.log("stefano pls", search);
 
   return (
@@ -65,6 +66,7 @@ const SideBarComponent = () => {
                   // setSearch(e.target.value);
                 }}
               />
+
               <Button
                 variant="black"
                 className="sidebarLink px-2 py-2 "
@@ -82,6 +84,7 @@ const SideBarComponent = () => {
                   dispatch(
                     artistFetchFunctionAction(searchValue, searchArrayAction)
                   );
+                  navigate("/");
                 }}
               >
                 GO
