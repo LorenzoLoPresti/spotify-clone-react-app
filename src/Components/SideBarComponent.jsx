@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Row,
@@ -33,13 +33,22 @@ const SideBarComponent = () => {
       >
         <Container className="flex-column align-items-start ">
           <NavbarBrand>
-            <img src={logo} alt="" style={{ height: "40px", width: "131px" }} />{" "}
+            <Link to="/">
+              <img
+                src={logo}
+                alt=""
+                style={{ height: "40px", width: "131px" }}
+              />
+            </Link>
           </NavbarBrand>
+
           <Navbar.Collapse
             className="flex-column align-items-start"
             style={{ fontSize: "1rem" }}
           >
-            <NavLink className="px-2 py-2 sidebarLink">Home</NavLink>
+            <Link to="/">
+              <p className="px-2 py-2 sidebarLink">Home</p>
+            </Link>
             <NavLink className="px-2 py-2 sidebarLink">Your Library</NavLink>
             <div className="d-flex mt-3">
               <input
