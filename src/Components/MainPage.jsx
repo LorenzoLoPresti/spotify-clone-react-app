@@ -20,12 +20,6 @@ const MainPage = () => {
     (state) => state.hipHop.hipHopArtistFetch
   );
   const dispatch = useDispatch();
-  // const [randomRockArtist, setRandomRockArtist] = useState(null);
-
-  //   useEffect(() => {
-  //     console.log(list);
-  //   }, []);
-  //   console.log("pippo", list);
 
   let rockArtists = [
     "queen",
@@ -38,28 +32,46 @@ const MainPage = () => {
     "bonjovi",
   ];
 
-  const random = () => {
-    let rockRandomArtists = [];
-    while (rockRandomArtists.length < 4) {
+  let popArtists = [
+    "maroon5",
+    "coldplay",
+    "onerepublic",
+    "jamesblunt",
+    "katyperry",
+    "arianagrande",
+  ];
+
+  let hipHopArtists = ["eminem", "snoopdogg", "lilwayne", "drake", "kanyewest"];
+
+  const random = (artistList) => {
+    let randomArtists = [];
+    while (randomArtists.length < 4) {
       // pushes elements inside the array until it has 4 strings
       let artist = rockArtists[Math.floor(Math.random() * rockArtists.length)]; // select an element from the array with an index between 0 and 7
-      if (!rockRandomArtists.includes(artist)) {
+      if (!randomArtists.includes(artist)) {
         // checks if the artist is not already present in the array
-        rockRandomArtists.push(artist); // pushes the artist in the array
+        randomArtists.push(artist); // pushes the artist in the array
       }
     }
-    console.log(rockRandomArtists);
-    // setRandomRockArtist(rockRandomArtists);
-    return rockRandomArtists;
+    // setRandomRockArtist(randomArtists);
+    return randomArtists;
   };
-  const [randomRockArtist, setRandomRockArtist] = useState(random());
+
+  const [randomRockArtist, setRandomRockArtist] = useState(random(rockArtists));
+  const [randomPopArtist, setRandomPopArtist] = useState(random(popArtists));
+  const [randomHipHopArtist, setRandomHipHopArtist] = useState(
+    random(hipHopArtists)
+  );
 
   useEffect(() => {
     // random();
-    console.log(randomRockArtist);
-    dispatch(
-      artistFetchFunctionAction(randomRockArtist[0], artistRockFetchAction)
-    );
+
+    for (let i = 0; i < 3; i++) {
+      dispatch(
+        artistFetchFunctionAction(randomRockArtist[i], artistRockFetchAction)
+      );
+    }
+
     dispatch(
       artistFetchFunctionAction(randomRockArtist[1], artistPopFetchAction)
     );
@@ -92,9 +104,41 @@ const MainPage = () => {
           </p>
         </Col>
       </Row>
-      <HomeArtistSection genre="Rock Classics" list={artistList} />
-      <HomeArtistSection genre="Pop Culture" list={popArtistList} />
-      <HomeArtistSection genre="Hip Hop" list={hipHopArtistList} />
+      <Col xs={10}>
+        <Row xl={4}>
+          <h2 className="text-light pt-5 ">{"genre"}</h2>
+        </Row>
+        <Row className="text-light py-3">
+          {/* <HomeArtistSection genre="Rock Classics" list={artistList} />
+          <HomeArtistSection genre="Pop Culture" list={popArtistList} />
+          <HomeArtistSection genre="Hip Hop" list={hipHopArtistList} /> */}
+          {randomRockArtist.map((element, index) => {
+            return (
+              <HomeArtistSection
+                list={artistList}
+                index={index}
+                key={"sono" + index}
+              />
+            );
+          })}
+        </Row>
+        <Row xl={4}>
+          <h2 className="text-light pt-5 ">{"genre"}</h2>
+        </Row>
+        <Row className="text-light py-3">
+          {/* <HomeArtistSection genre="Rock Classics" list={artistList} />
+          <HomeArtistSection genre="Pop Culture" list={popArtistList} />
+          <HomeArtistSection genre="Hip Hop" list={hipHopArtistList} /> */}
+        </Row>
+        <Row xl={4}>
+          <h2 className="text-light pt-5 ">{"genre"}</h2>
+        </Row>
+        <Row className="text-light py-3">
+          {/* <HomeArtistSection genre="Rock Classics" list={artistList} />
+          <HomeArtistSection genre="Pop Culture" list={popArtistList} />
+          <HomeArtistSection genre="Hip Hop" list={hipHopArtistList} /> */}
+        </Row>
+      </Col>
     </Col>
   );
 };
