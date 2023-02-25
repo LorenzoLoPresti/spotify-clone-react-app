@@ -1,24 +1,68 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import HomeArtistSection from "./HomeArtistSection";
+import SingleAlbum from "./SingleAlbum";
 import {
-  artistFetchAction,
   artistFetchFunctionAction,
-  artistListAction,
-  artistRockFetchAction,
-  artistPopFetchAction,
-  artisthipHopFetchAction,
+  artistRockFetchAction1,
+  artistRockFetchAction2,
+  artistRockFetchAction3,
+  artistRockFetchAction4,
+  artistPopFetchAction1,
+  artistPopFetchAction2,
+  artistPopFetchAction3,
+  artistPopFetchAction4,
+  artisthipHopFetchAction1,
+  artisthipHopFetchAction2,
+  artisthipHopFetchAction3,
+  artisthipHopFetchAction4,
 } from "../Redux/Actions";
 import { useSelector } from "react-redux";
 
 const MainPage = () => {
   const loading = useSelector((state) => state.rock.loading);
-  const artistList = useSelector((state) => state.rock.rockArtistFetch);
-  const popArtistList = useSelector((state) => state.pop.popArtistFetch);
-  const hipHopArtistList = useSelector(
-    (state) => state.hipHop.hipHopArtistFetch
+
+  const rockArtistList1 = useSelector((state) => state.rock.rockArtistFetch1);
+  const rockArtistList2 = useSelector((state) => state.rock.rockArtistFetch2);
+  const rockArtistList3 = useSelector((state) => state.rock.rockArtistFetch3);
+  const rockArtistList4 = useSelector((state) => state.rock.rockArtistFetch4);
+  const rockArtistListArray = [
+    rockArtistList1,
+    rockArtistList2,
+    rockArtistList3,
+    rockArtistList4,
+  ];
+
+  const popArtistList1 = useSelector((state) => state.pop.popArtistFetch1);
+  const popArtistList2 = useSelector((state) => state.pop.popArtistFetch2);
+  const popArtistList3 = useSelector((state) => state.pop.popArtistFetch3);
+  const popArtistList4 = useSelector((state) => state.pop.popArtistFetch4);
+  const popArtistListArray = [
+    popArtistList1,
+    popArtistList2,
+    popArtistList3,
+    popArtistList4,
+  ];
+
+  const hipHopArtistList1 = useSelector(
+    (state) => state.hipHop.hipHopArtistFetch1
   );
+  const hipHopArtistList2 = useSelector(
+    (state) => state.hipHop.hipHopArtistFetch2
+  );
+  const hipHopArtistList3 = useSelector(
+    (state) => state.hipHop.hipHopArtistFetch3
+  );
+  const hipHopArtistList4 = useSelector(
+    (state) => state.hipHop.hipHopArtistFetch4
+  );
+  const hipHopArtistListArray = [
+    hipHopArtistList1,
+    hipHopArtistList2,
+    hipHopArtistList3,
+    hipHopArtistList4,
+  ];
+
   const dispatch = useDispatch();
 
   let rockArtists = [
@@ -47,7 +91,7 @@ const MainPage = () => {
     let randomArtists = [];
     while (randomArtists.length < 4) {
       // pushes elements inside the array until it has 4 strings
-      let artist = rockArtists[Math.floor(Math.random() * rockArtists.length)]; // select an element from the array with an index between 0 and 7
+      let artist = artistList[Math.floor(Math.random() * rockArtists.length)]; // select an element from the array with an index between 0 and 7
       if (!randomArtists.includes(artist)) {
         // checks if the artist is not already present in the array
         randomArtists.push(artist); // pushes the artist in the array
@@ -65,19 +109,44 @@ const MainPage = () => {
 
   useEffect(() => {
     // random();
+    let rockActionsArray = [
+      artistRockFetchAction1,
+      artistRockFetchAction2,
+      artistRockFetchAction3,
+      artistRockFetchAction4,
+    ];
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < rockActionsArray.length; i++) {
       dispatch(
-        artistFetchFunctionAction(randomRockArtist[i], artistRockFetchAction)
+        artistFetchFunctionAction(randomRockArtist[i], rockActionsArray[i])
       );
     }
 
-    dispatch(
-      artistFetchFunctionAction(randomRockArtist[1], artistPopFetchAction)
-    );
-    dispatch(
-      artistFetchFunctionAction(randomRockArtist[2], artisthipHopFetchAction)
-    );
+    let popActionsArray = [
+      artistPopFetchAction1,
+      artistPopFetchAction2,
+      artistPopFetchAction3,
+      artistPopFetchAction4,
+    ];
+
+    for (let i = 0; i < popActionsArray.length; i++) {
+      dispatch(
+        artistFetchFunctionAction(randomPopArtist[i], popActionsArray[i])
+      );
+    }
+
+    let hipHopActionsArray = [
+      artisthipHopFetchAction1,
+      artisthipHopFetchAction2,
+      artisthipHopFetchAction3,
+      artisthipHopFetchAction4,
+    ];
+
+    for (let i = 0; i < popActionsArray.length; i++) {
+      dispatch(
+        artistFetchFunctionAction(randomHipHopArtist[i], hipHopActionsArray[i])
+      );
+    }
   }, []);
 
   return (
@@ -106,37 +175,34 @@ const MainPage = () => {
       </Row>
       <Col xs={10}>
         <Row xl={4}>
-          <h2 className="text-light pt-5 ">{"genre"}</h2>
+          <h2 className="text-light pt-5 ">{"Rock Classic"}</h2>
         </Row>
         <Row className="text-light py-3">
-          {/* <HomeArtistSection genre="Rock Classics" list={artistList} />
-          <HomeArtistSection genre="Pop Culture" list={popArtistList} />
-          <HomeArtistSection genre="Hip Hop" list={hipHopArtistList} /> */}
-          {randomRockArtist.map((element, index) => {
+          {rockArtistListArray.map((element, index) => {
             return (
-              <HomeArtistSection
-                list={artistList}
-                index={index}
-                key={"sono" + index}
-              />
+              <SingleAlbum list={element} index={index} key={"sono" + index} />
             );
           })}
         </Row>
         <Row xl={4}>
-          <h2 className="text-light pt-5 ">{"genre"}</h2>
+          <h2 className="text-light pt-5 ">{"Pop Culture"}</h2>
         </Row>
         <Row className="text-light py-3">
-          {/* <HomeArtistSection genre="Rock Classics" list={artistList} />
-          <HomeArtistSection genre="Pop Culture" list={popArtistList} />
-          <HomeArtistSection genre="Hip Hop" list={hipHopArtistList} /> */}
+          {popArtistListArray.map((element, index) => {
+            return (
+              <SingleAlbum list={element} index={index} key={"sono" + index} />
+            );
+          })}
         </Row>
         <Row xl={4}>
-          <h2 className="text-light pt-5 ">{"genre"}</h2>
+          <h2 className="text-light pt-5 ">{"Hip Hop"}</h2>
         </Row>
         <Row className="text-light py-3">
-          {/* <HomeArtistSection genre="Rock Classics" list={artistList} />
-          <HomeArtistSection genre="Pop Culture" list={popArtistList} />
-          <HomeArtistSection genre="Hip Hop" list={hipHopArtistList} /> */}
+          {hipHopArtistListArray.map((element, index) => {
+            return (
+              <SingleAlbum list={element} index={index} key={"sono" + index} />
+            );
+          })}
         </Row>
       </Col>
     </Col>
