@@ -67,6 +67,9 @@ const MainPage = () => {
     hipHopArtistList4,
   ];
 
+  // SEARCH VALUES
+  const searchArray = useSelector((state) => state.search.searchArray);
+
   // ARRAY ARITISTI
   let rockArtists = [
     "queen",
@@ -179,13 +182,36 @@ const MainPage = () => {
         </Col>
       </Row>
       <Col xs={10}>
+        <>
+          {searchArray && (
+            <Row>
+              <h2 className="text-light pt-5 ">{"Search"}</h2>
+            </Row>
+          )}
+          <Row xl={4} className="text-light py-3 ">
+            {searchArray &&
+              searchArray?.data?.map((element, index) => {
+                return (
+                  <SingleAlbum
+                    list={element}
+                    index={index}
+                    key={"sono" + index}
+                  />
+                );
+              })}
+          </Row>
+        </>
         <Row>
           <h2 className="text-light pt-5 ">{"Rock Classic"}</h2>
         </Row>
         <Row xl={4} className="text-light py-3 ">
           {rockArtistListArray.map((element, index) => {
             return (
-              <SingleAlbum list={element} index={index} key={"sono" + index} />
+              <SingleAlbum
+                list={element?.data[0]}
+                index={index}
+                key={"sono" + index}
+              />
             );
           })}
         </Row>
@@ -195,7 +221,11 @@ const MainPage = () => {
         <Row xl={4} className="text-light py-3 ">
           {popArtistListArray.map((element, index) => {
             return (
-              <SingleAlbum list={element} index={index} key={"sono" + index} />
+              <SingleAlbum
+                list={element?.data[0]}
+                index={index}
+                key={"sono" + index}
+              />
             );
           })}
         </Row>
@@ -209,7 +239,11 @@ const MainPage = () => {
         >
           {hipHopArtistListArray.map((element, index) => {
             return (
-              <SingleAlbum list={element} index={index} key={"sono" + index} />
+              <SingleAlbum
+                list={element?.data[0]}
+                index={index}
+                key={"sono" + index}
+              />
             );
           })}
         </Row>

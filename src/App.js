@@ -8,7 +8,6 @@ import PlayerComponent from "./Components/PlayerComponent";
 function App() {
   return (
     <div className="App">
-      7
       <Container fluid className="text-start">
         <Row>
           <SideBarComponent />

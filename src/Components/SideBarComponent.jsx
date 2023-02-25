@@ -11,14 +11,19 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/logo/logo.png";
-import { SEARCH_ON } from "../Redux/Actions";
+import {
+  artistFetchFunctionAction,
+  searchArrayAction,
+  SEARCH_ON,
+} from "../Redux/Actions";
 
 const SideBarComponent = () => {
   // const [search, setSearch] = useState("");
   const searchValue = useSelector((state) => state.search.searchValue);
+  const searchArray = useSelector((state) => state.search.searchArray);
   const dispatch = useDispatch();
   // console.log("stefano pls", search);
-  console.log("stefano", searchValue);
+
   return (
     <Col xs={2} className="d-none d-md-block">
       <Navbar
@@ -65,7 +70,9 @@ const SideBarComponent = () => {
                     type: SEARCH_ON,
                     payload: searchValue,
                   });
-                  console.log(searchValue);
+                  dispatch(
+                    artistFetchFunctionAction(searchValue, searchArrayAction)
+                  );
                 }}
               >
                 GO

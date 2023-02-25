@@ -2,6 +2,7 @@ export const ROCK_ARTIST_LIST = "ARTIST_LIST";
 export const POP_ARTIST_LIST = "POP_ARTIST_LIST";
 export const HIP_HOP_ARTIST_LIST = "HIP_HOP_ARTIST_LIST";
 export const SEARCH_ON = "SEARCH_ON";
+export const SEARCH_ARRAY = "SEARCH_ARRAY";
 
 // LISTE DELLE FETCH NELLO STATO
 // LISTE ROCK
@@ -74,6 +75,11 @@ export const artisthipHopFetchAction3 = (artistList) => {
 };
 export const artisthipHopFetchAction4 = (artistList) => {
   return { type: HIP_HOP_ARTIST_FETCH4, payload: artistList };
+};
+
+// ACTION SEARCH
+export const searchArrayAction = (searchArray) => {
+  return { type: SEARCH_ARRAY, payload: searchArray };
 };
 
 // FETCH
