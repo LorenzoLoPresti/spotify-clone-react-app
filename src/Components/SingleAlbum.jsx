@@ -18,12 +18,12 @@ const SingleAlbum = ({ list }) => {
               to={"/details/" + list?.album.id}
               style={{ textDecoration: "none" }}
             >
-              <img src={list && list.album.cover_big} alt="" />
+              <img src={list && list?.album.cover_big} alt="" />
 
               <p className="d-block">
                 {list && list?.album.title.length < 16
                   ? "Album: " + list?.album.title
-                  : "Album: " + list.album.title.substring(0, 16) + "..."}
+                  : "Album: " + list?.album.title.substring(0, 16) + "..."}
               </p>
             </Link>
             <Link

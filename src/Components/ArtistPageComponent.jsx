@@ -88,7 +88,10 @@ const ArtistPageComponent = () => {
               <div className="row" id="apiLoaded">
                 <Row>
                   {fetchResult?.data?.map((list, index) => (
-                    <Col className="text-center mainPage mb-5">
+                    <Col
+                      className="text-center mainPage mb-5"
+                      key={"songId:" + list.id}
+                    >
                       <Link
                         to={"/details/" + list?.album.id}
                         style={{ textDecoration: "none" }}

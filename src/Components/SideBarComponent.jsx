@@ -15,18 +15,20 @@ import {
   artistFetchFunctionAction,
   searchArrayAction,
   SEARCH_ON,
+  selectedSongAction,
 } from "../Redux/Actions";
 
 const SideBarComponent = () => {
   // const [search, setSearch] = useState("");
   const searchValue = useSelector((state) => state.search.searchValue);
   const searchArray = useSelector((state) => state.search.searchArray);
+  const playerData = useSelector((state) => state.player.selectedSong);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // console.log("stefano pls", search);
 
   return (
-    <Col xs={2} className="d-none d-md-block">
+    <Col xs={2} className="d-none d-lg-block">
       <Navbar
         expand="md"
         variant="black"
@@ -48,7 +50,14 @@ const SideBarComponent = () => {
             style={{ fontSize: "1rem" }}
           >
             <Link to="/" style={{ textDecoration: "none" }}>
-              <p className="px-2 py-2 mb-0 sidebarLink">Home</p>
+              <p
+                className="px-2 py-2 mb-0 sidebarLink"
+                onClick={() => {
+                  dispatch(selectedSongAction(null));
+                }}
+              >
+                Home
+              </p>
             </Link>
             <NavLink className="px-2 py-2 sidebarLink">Your Library</NavLink>
             <div className="d-flex mt-3">
@@ -84,6 +93,7 @@ const SideBarComponent = () => {
                   dispatch(
                     artistFetchFunctionAction(searchValue, searchArrayAction)
                   );
+                  dispatch(selectedSongAction(null));
                   navigate("/");
                 }}
               >

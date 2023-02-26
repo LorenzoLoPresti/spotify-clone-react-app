@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { selectedSongAction } from "../Redux/Actions";
 
 const DetailsComponents = () => {
   const params = useParams();
+  const dispatch = useDispatch();
   const [fetchResult, setFetchResult] = useState();
   const [loading, setLoading] = useState(true);
+  const playerData = useSelector((state) => state.player.selectedSong);
 
   const durationConverter = (track) => {
     const minutes = Math.floor(
@@ -83,14 +87,26 @@ const DetailsComponents = () => {
               <div className="col-md-10 mb-5" id="trackList">
                 {fetchResult &&
                   fetchResult?.tracks?.data?.map((element, index) => (
-                    <div className="py-3 trackHover" key={"track" + index}>
-                      <a
-                        href="#"
+                    <div
+                      className="py-3 trackHover"
+                      key={"track" + index}
+                      onClick={() => {
+                        console.log("stefano si avvicina", element);
+                        dispatch(
+                          selectedSongAction([
+                            element.album.cover_big,
+                            element.title,
+                            element.artist.name,
+                          ])
+                        );
+                      }}
+                    >
+                      <span
                         className="card-title trackHover px-3"
                         style={{ color: "white" }}
                       >
                         {element.title}
-                      </a>
+                      </span>
                       <small className="duration" style={{ color: "white" }}>
                         {durationConverter(element.duration)}
                       </small>

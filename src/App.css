@@ -280,3 +280,30 @@ ul {
 .mainPage img {
   width: 200px;
 }
+
+.playerImg {
+  left: 10%;
+  top: 8px;
+}
+
+/* MEDIA  */
+@media screen and (min-width: 992px) {
+  .playerImg {
+    left: 25%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .playerImg {
+    left: 20%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .playerImg {
+    left: 18%;
+  }
+}
+@media screen and (min-width: 1550px) {
+  .playerImg {
+    left: 15%;
+  }
+}

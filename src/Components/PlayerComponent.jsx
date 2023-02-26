@@ -4,13 +4,39 @@ import PreviousBtn from "../assets/buttons/Previous.png";
 import repeatBtn from "../assets/buttons/Repeat.png";
 import shuffleBtn from "../assets/buttons/Shuffle.png";
 import { Col, Row, Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const PlayerComponent = () => {
+  const playerData = useSelector((state) => state.player.selectedSong);
+
   return (
     <div className="container-fluid fixed-bottom bg-container pt-1">
       <div className="row">
         <div className="col-lg-10 offset-lg-2">
-          <div className="row">
+          <div className="row position-realtive">
+            {playerData && (
+              <>
+                <div className="position-absolute playerImg d-flex">
+                  <img
+                    src={(playerData && playerData?.[0]) || ""}
+                    alt="song-cover"
+                    style={{
+                      height: "70px",
+                      width: "70px",
+                      padding: "0px",
+                    }}
+                  />
+                  <div className="ms-2">
+                    <p className="text-light">
+                      {playerData && playerData?.[1]}
+                    </p>
+                    <p className="text-light">
+                      {playerData && "Artist: " + playerData?.[2]}
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
             <div className="col-4 col-md-4 col-lg-2 offset-3 offset-md-4 offset-lg-5 playerControls mt-1">
               <div className="d-flex justify-content-between">
                 <a href="#">

@@ -17,11 +17,15 @@ export const POP_ARTIST_FETCH2 = "POP_ARTIST_FETCH2";
 export const POP_ARTIST_FETCH3 = "POP_ARTIST_FETCH3";
 export const POP_ARTIST_FETCH4 = "POP_ARTIST_FETCH4";
 
-// LISTE HIP HO
+// LISTE HIP HOP
 export const HIP_HOP_ARTIST_FETCH1 = "HIP_HOP_ARTIST_FETCH1";
 export const HIP_HOP_ARTIST_FETCH2 = "HIP_HOP_ARTIST_FETCH2";
 export const HIP_HOP_ARTIST_FETCH3 = "HIP_HOP_ARTIST_FETCH3";
 export const HIP_HOP_ARTIST_FETCH4 = "HIP_HOP_ARTIST_FETCH4";
+
+// CASI PLAYER REDUCER
+export const SELECTED_SONG = "SELECTED_SONG";
+export const FAVOURITE = "FAVOURITE";
 
 // LISTE ARTISTI
 export const artistListAction = (artistList) => {
@@ -34,7 +38,7 @@ export const hipHopArtistListAction = (artistList) => {
   return { type: HIP_HOP_ARTIST_LIST, payload: artistList };
 };
 
-// ACTION PER I DISPATCH NELLA FETCH
+// ACTIONS PER I DISPATCH NELLA FETCH
 // ACTIONS ROCK
 export const artistRockFetchAction1 = (artistList) => {
   return { type: ROCK_ARTIST_FETCH1, payload: artistList };
@@ -82,6 +86,10 @@ export const searchArrayAction = (searchArray) => {
   return { type: SEARCH_ARRAY, payload: searchArray };
 };
 
+// ACTIONS PLAYER
+export const selectedSongAction = (songData) => {
+  return { type: SELECTED_SONG, payload: songData };
+};
 // FETCH
 
 export const artistFetchFunctionAction = (artist, genreFetch) => {
