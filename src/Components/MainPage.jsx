@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import SingleAlbum from "./SingleAlbum";
 import {
@@ -19,9 +19,8 @@ import {
   SEARCH_ARRAY,
 } from "../Redux/Actions";
 import { useSelector } from "react-redux";
-import { SEARCH_ON } from "../Redux/Actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCross, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -95,7 +94,14 @@ const MainPage = () => {
     "arianagrande",
   ];
 
-  let hipHopArtists = ["eminem", "snoopdogg", "lilwayne", "drake", "kanyewest"];
+  let hipHopArtists = [
+    "eminem",
+    "snoopdogg",
+    "lilwayne",
+    "drake",
+    "kanyewest",
+    "2pac",
+  ];
 
   // FUNZIONE RANDOM
   const random = (artistList) => {

@@ -49,6 +49,7 @@ const DetailsComponents = () => {
 
   useEffect(() => {
     singleAlbumFetch(params.list);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
