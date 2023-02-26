@@ -1,12 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import {
   Container,
-  Row,
   Col,
   Navbar,
   NavbarBrand,
   NavLink,
-  Form,
   Button,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,21 +16,14 @@ import {
   selectedSongAction,
 } from "../Redux/Actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBookOpen,
-  faCoffee,
-  faHome,
-  faHouse,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBookOpen, faHouse } from "@fortawesome/free-solid-svg-icons";
 
 const SideBarComponent = () => {
-  // const [search, setSearch] = useState("");
   const searchValue = useSelector((state) => state.search.searchValue);
-  const searchArray = useSelector((state) => state.search.searchArray);
-  const playerData = useSelector((state) => state.player.selectedSong);
+  // const searchArray = useSelector((state) => state.search.searchArray);
+  // const playerData = useSelector((state) => state.player.selectedSong);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // console.log("stefano pls", search);
 
   return (
     <Col xs={2} className="d-none d-lg-block">
@@ -83,7 +74,6 @@ const SideBarComponent = () => {
                     type: SEARCH_ON,
                     payload: e.target.value,
                   });
-                  // setSearch(e.target.value);
                 }}
               />
 
@@ -114,26 +104,10 @@ const SideBarComponent = () => {
           </Navbar.Collapse>
         </Container>
         <Container className="flex-column">
-          <Button
-            className="mb-3 signup-btn"
-            variant="light"
-            // style={{
-            //   width: "90%",
-            //   border: "1px solid black",
-            //   borderRadius: "20px",
-            // }}
-          >
+          <Button className="mb-3 signup-btn" variant="light">
             Sign up
           </Button>
-          <Button
-            className="mb-3 login-btn"
-            variant="black"
-            // style={{
-            //   width: "90%",
-            //   border: "1px solid white",
-            //   borderRadius: "20px",
-            // }}
-          >
+          <Button className="mb-3 login-btn" variant="black">
             Login
           </Button>
           <div className="d-flex mb-4">

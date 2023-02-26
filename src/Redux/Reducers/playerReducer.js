@@ -1,5 +1,4 @@
-import { act } from "react-dom/test-utils";
-import { FAVOURITE, SELECTED_SONG } from "../Actions";
+import { ADD_FAVOURITE, REMOVE_FAVOURITE, SELECTED_SONG } from "../Actions";
 
 const initialState = {
   selectedSong: null,
@@ -11,10 +10,18 @@ export const playerReducer = (state = initialState, action) => {
     case SELECTED_SONG:
       return { ...state, selectedSong: action.payload };
 
-    case FAVOURITE:
+    case ADD_FAVOURITE:
       return {
         ...state,
         favouriteList: [...state.favouriteList, action.payload],
+      };
+
+    case REMOVE_FAVOURITE:
+      return {
+        ...state,
+        favouriteList: state.favouriteList.filter(
+          (song) => song !== action.payload
+        ),
       };
     default:
       return state;

@@ -25,7 +25,8 @@ export const HIP_HOP_ARTIST_FETCH4 = "HIP_HOP_ARTIST_FETCH4";
 
 // CASI PLAYER REDUCER
 export const SELECTED_SONG = "SELECTED_SONG";
-export const FAVOURITE = "FAVOURITE";
+export const ADD_FAVOURITE = "FAVOURITE";
+export const REMOVE_FAVOURITE = "REMOVE_FAVOURITE";
 
 // LISTE ARTISTI
 export const artistListAction = (artistList) => {
@@ -90,6 +91,14 @@ export const searchArrayAction = (searchArray) => {
 export const selectedSongAction = (songData) => {
   return { type: SELECTED_SONG, payload: songData };
 };
+
+export const addFavouriteSongAction = (favSong) => {
+  return { type: ADD_FAVOURITE, payload: favSong };
+};
+
+export const removeFavouriteSongAction = (favSong) => {
+  return { type: REMOVE_FAVOURITE, payload: favSong };
+};
 // FETCH
 
 export const artistFetchFunctionAction = (artist, genreFetch) => {
@@ -97,15 +106,19 @@ export const artistFetchFunctionAction = (artist, genreFetch) => {
     // dispatch({
     //   type: "LOADING_ON",
     // });
-    let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist
-    );
-    if (response.ok) {
-      let data = await response.json();
-      dispatch(genreFetch(data));
-    }
-    dispatch({
-      type: "LOADING_OFF",
-    });
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist
+      );
+      if (response.ok) {
+        let data = await response.json();
+        dispatch(genreFetch(data));
+      } else {
+        alert("Inserisci almeno una lettera o un numero LOL");
+      }
+      dispatch({
+        type: "LOADING_OFF",
+      });
+    } catch (error) {}
   };
 };

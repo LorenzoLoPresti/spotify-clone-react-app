@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectedSongAction } from "../Redux/Actions";
+import {
+  addFavouriteSongAction,
+  removeFavouriteSongAction,
+  selectedSongAction,
+} from "../Redux/Actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const DetailsComponents = () => {
   const params = useParams();
@@ -10,6 +16,8 @@ const DetailsComponents = () => {
   const [fetchResult, setFetchResult] = useState();
   const [loading, setLoading] = useState(true);
   const playerData = useSelector((state) => state.player.selectedSong);
+  const favouriteList = useSelector((state) => state.player.favouriteList);
+  console.log("erjgoawijafafwef", favouriteList);
 
   const durationConverter = (track) => {
     const minutes = Math.floor(
@@ -71,10 +79,17 @@ const DetailsComponents = () => {
               alt="Album"
             />
             <div className="mt-4 text-center">
-              <p className="album-title">{fetchResult?.title}</p>
+              <p className="album-title" style={{ fontSize: "1.5em" }}>
+                {fetchResult?.title}
+              </p>
             </div>
             <div className="text-center">
-              <p className="artist-name">{fetchResult?.artist.name}</p>
+              <p
+                className="artist-name"
+                style={{ fontSize: "1rem", fontWeight: "400" }}
+              >
+                {fetchResult?.artist.name}
+              </p>
             </div>
             <div className="mt-4 text-center">
               <button id="btnPlay" className="btn btn-success" type="button">
@@ -87,8 +102,8 @@ const DetailsComponents = () => {
               <div className="col-md-10 mb-5" id="trackList">
                 {fetchResult &&
                   fetchResult?.tracks?.data?.map((element, index) => (
-                    <div
-                      className="py-3 trackHover"
+                    <Row
+                      className="py-3 trackHover d-flex justify-content-between"
                       key={"track" + index}
                       onClick={() => {
                         console.log("stefano si avvicina", element);
@@ -101,16 +116,41 @@ const DetailsComponents = () => {
                         );
                       }}
                     >
-                      <span
+                      <Col
+                        xs={6}
                         className="card-title trackHover px-3"
                         style={{ color: "white" }}
                       >
                         {element.title}
-                      </span>
-                      <small className="duration" style={{ color: "white" }}>
-                        {durationConverter(element.duration)}
-                      </small>
-                    </div>
+                      </Col>
+                      <Col xs={4}>
+                        {favouriteList.includes(element.title) ? (
+                          <FontAwesomeIcon
+                            icon={faHeartCircleCheck}
+                            className="text-success ps-5"
+                            onClick={() => {
+                              dispatch(
+                                removeFavouriteSongAction(element.title)
+                              );
+                            }}
+                          />
+                        ) : (
+                          <FontAwesomeIcon
+                            icon={faHeart}
+                            className="ps-5"
+                            style={{ color: "grey" }}
+                            onClick={() => {
+                              dispatch(addFavouriteSongAction(element.title));
+                            }}
+                          />
+                        )}
+                      </Col>
+                      <Col xs={2}>
+                        <small className="duration" style={{ color: "white" }}>
+                          {durationConverter(element.duration)}
+                        </small>
+                      </Col>
+                    </Row>
                   ))}
               </div>
             </div>
