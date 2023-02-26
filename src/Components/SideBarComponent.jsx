@@ -47,8 +47,8 @@ const SideBarComponent = () => {
             className="flex-column align-items-start"
             style={{ fontSize: "1rem" }}
           >
-            <Link to="/">
-              <p className="px-2 py-2 sidebarLink">Home</p>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <p className="px-2 py-2 mb-0 sidebarLink">Home</p>
             </Link>
             <NavLink className="px-2 py-2 sidebarLink">Your Library</NavLink>
             <div className="d-flex mt-3">
@@ -94,32 +94,37 @@ const SideBarComponent = () => {
         </Container>
         <Container className="flex-column">
           <Button
-            className="mb-3"
+            className="mb-3 signup-btn"
             variant="light"
-            style={{
-              width: "90%",
-              border: "1px solid black",
-              borderRadius: "20px",
-            }}
+            // style={{
+            //   width: "90%",
+            //   border: "1px solid black",
+            //   borderRadius: "20px",
+            // }}
           >
             Sign up
           </Button>
           <Button
-            className="mb-3 text-light"
+            className="mb-3 login-btn"
             variant="black"
-            style={{
-              width: "90%",
-              border: "1px solid white",
-              borderRadius: "20px",
-            }}
+            // style={{
+            //   width: "90%",
+            //   border: "1px solid white",
+            //   borderRadius: "20px",
+            // }}
           >
             Login
           </Button>
           <div className="d-flex mb-4">
-            <NavLink className="me-3" style={{ color: "rgb(145, 145, 145)" }}>
+            <NavLink
+              className="me-3  nLink"
+              style={{ color: "rgb(145, 145, 145)" }}
+            >
               Cookie Policy
             </NavLink>
-            <NavLink style={{ color: "rgb(145, 145, 145)" }}>Privacy</NavLink>
+            <NavLink className="nLink" style={{ color: "rgb(145, 145, 145)" }}>
+              Privacy
+            </NavLink>
           </div>
         </Container>
       </Navbar>

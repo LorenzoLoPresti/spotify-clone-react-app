@@ -41,14 +41,14 @@ const DetailsComponents = () => {
   }, []);
 
   return (
-    <div className="col-12 col-md-9 offset-md-3 mainPage">
+    <div className="col-12 col-md-9 offset-md-3 mainPage mt-4">
       <div className="row mb-3">
         <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
-          <a href="3">TRENDING</a>
-          <a href="2">PODCAST</a>
-          <a href="3">MOODS AND GENRES</a>
-          <a href="3">NEW RELEASES</a>
-          <a href="3">DISCOVER</a>
+          <span>TRENDING</span>
+          <span>PODCAST</span>
+          <span>MOODS AND GENRES</span>
+          <span>NEW RELEASES</span>
+          <span>DISCOVER</span>
         </div>
       </div>
       {loading ? (

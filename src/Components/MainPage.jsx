@@ -158,26 +158,26 @@ const MainPage = () => {
   }, []);
 
   return (
-    <Col md={9} className="offset-md-3 mainPage ">
+    <Col md={9} className="offset-md-3 mainPage mt-3">
       <Row>
         <Col xs={9} className="col-lg-11 mainLinks d-none d-md-flex">
           <p>
-            <a href="e">TRENDING</a>
+            <span>TRENDING</span>
           </p>
           <p>
             {" "}
-            <a href="#">PODCAST</a>
+            <span>PODCAST</span>
           </p>
           <p>
             {" "}
-            <a href="#">MOODS AND GENRES</a>
+            <span>MOODS AND GENRES</span>
           </p>
           <p>
             {" "}
-            <a href="#">NEW RELEASES</a>
+            <span>NEW RELEASES</span>
           </p>
           <p>
-            <a href="#">DISCOVER</a>
+            <span>DISCOVER</span>
           </p>
         </Col>
       </Row>

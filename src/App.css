@@ -68,6 +68,11 @@ body {
   transition: 0.3s;
 }
 
+.sidebarLink:hover {
+  color: white !important;
+  transition: 0.3s;
+}
+
 .navbar.fixed-left .navbar-collapse .navbar-nav a:hover {
   color: white !important;
 }
@@ -90,6 +95,10 @@ ul {
 
 .nav-btn a {
   color: rgb(145, 145, 145);
+}
+
+.nLink:hover {
+  text-decoration: underline;
 }
 
 .signup-btn {
@@ -166,17 +175,18 @@ ul {
   justify-content: space-evenly;
 }
 
-.mainLinks a {
+.mainLinks span {
   color: white;
   font-weight: 700;
   font-size: 12px;
   opacity: 0.3;
 }
 
-.mainLinks a:hover {
+.mainLinks span:hover {
   text-decoration: none;
   opacity: 1;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .imgLinks a p,
@@ -188,7 +198,7 @@ ul {
   font-weight: 700;
 }
 
-.mainPage p a:hover {
+.mainPage p:hover {
   color: rgb(138, 138, 138);
 }
 
@@ -196,7 +206,7 @@ ul {
   text-decoration: none;
 }
 
-.imgLinks a img:hover {
+.mainPage img:hover {
   filter: brightness(50%);
 }
 
