@@ -83,6 +83,11 @@ const MainPage = () => {
     "oasis",
     "thewho",
     "bonjovi",
+    "articmonkeys",
+    "deftones",
+    "incubus",
+    "twodoorcinemaclub",
+    "foofighters",
   ];
 
   let popArtists = [
@@ -92,6 +97,10 @@ const MainPage = () => {
     "jamesblunt",
     "katyperry",
     "arianagrande",
+    "beyoncee",
+    "alanismorissette",
+    "nellyfurtado",
+    "thundercat",
   ];
 
   let hipHopArtists = [
@@ -101,6 +110,11 @@ const MainPage = () => {
     "drake",
     "kanyewest",
     "2pac",
+    "50cent",
+    "kendricklamar",
+    "icecube",
+    "dmx",
+    "coolio",
   ];
 
   // FUNZIONE RANDOM
