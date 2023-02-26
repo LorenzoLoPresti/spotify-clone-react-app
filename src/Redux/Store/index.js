@@ -13,7 +13,7 @@ const persistConfig = {
   storage,
   transforms: [
     encryptTransform({
-      secretKey: "SUPER_SAYAN_ENCRYPTED_PSW",
+      secretKey: process.env.REACT_APP_PERSIST_KEY,
     }),
   ],
 };
