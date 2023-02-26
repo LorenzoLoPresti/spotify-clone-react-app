@@ -4,6 +4,19 @@ import { rockArtistReducer } from "../Reducers/rockArtistReducer";
 import { popArtistReducer } from "../Reducers/popArtistReducer";
 import { searchReducer } from "../Reducers/searchReducer";
 import { playerReducer } from "../Reducers/playerReducer";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import { encryptTransform } from "redux-persist-transform-encrypt";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  transforms: [
+    encryptTransform({
+      secretKey: "SUPER_SAYAN_ENCRYPTED_PSW",
+    }),
+  ],
+};
 
 const rootReducer = combineReducers({
   rock: rockArtistReducer,
@@ -13,6 +26,10 @@ const rootReducer = combineReducers({
   player: playerReducer,
 });
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
 });
+
+export const persistor = persistStore(store);

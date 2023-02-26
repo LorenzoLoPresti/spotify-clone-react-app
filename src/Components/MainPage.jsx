@@ -16,8 +16,12 @@ import {
   artisthipHopFetchAction2,
   artisthipHopFetchAction3,
   artisthipHopFetchAction4,
+  SEARCH_ARRAY,
 } from "../Redux/Actions";
 import { useSelector } from "react-redux";
+import { SEARCH_ON } from "../Redux/Actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCross, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -185,7 +189,20 @@ const MainPage = () => {
         <>
           {searchArray && (
             <Row>
-              <h2 className="text-light pt-5 ">{"Search"}</h2>
+              <h2 className="text-light pt-5 ">
+                <FontAwesomeIcon
+                  className="text-secondary me-3"
+                  style={{ cursor: "pointer" }}
+                  icon={faXmark}
+                  onClick={() => {
+                    dispatch({
+                      type: SEARCH_ARRAY,
+                      payload: null,
+                    });
+                  }}
+                />
+                {"Search"}
+              </h2>
             </Row>
           )}
           <Row xl={4} className="text-light py-3 ">
