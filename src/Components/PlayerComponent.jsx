@@ -28,10 +28,14 @@ const PlayerComponent = () => {
                   />
                   <div className="ms-2">
                     <p className="text-light">
-                      {playerData && playerData?.[1]}
+                      {playerData && playerData?.[1].length > 16
+                        ? playerData?.[1].substring(0, 20) + "..."
+                        : playerData?.[1]}
                     </p>
                     <p className="text-light">
-                      {playerData && "Artist: " + playerData?.[2]}
+                      {playerData && playerData?.[2].length < 7
+                        ? "Artist: " + playerData?.[2]
+                        : playerData?.[2]}
                     </p>
                   </div>
                 </div>

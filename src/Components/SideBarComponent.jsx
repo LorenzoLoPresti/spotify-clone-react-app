@@ -17,6 +17,13 @@ import {
   SEARCH_ON,
   selectedSongAction,
 } from "../Redux/Actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBookOpen,
+  faCoffee,
+  faHome,
+  faHouse,
+} from "@fortawesome/free-solid-svg-icons";
 
 const SideBarComponent = () => {
   // const [search, setSearch] = useState("");
@@ -56,10 +63,14 @@ const SideBarComponent = () => {
                   dispatch(selectedSongAction(null));
                 }}
               >
+                <FontAwesomeIcon icon={faHouse} className="me-1" />
                 Home
               </p>
             </Link>
-            <NavLink className="px-2 py-2 sidebarLink">Your Library</NavLink>
+            <NavLink className="px-2 py-2 sidebarLink">
+              <FontAwesomeIcon icon={faBookOpen} className="me-1" />
+              Your Library
+            </NavLink>
             <div className="d-flex mt-3">
               <input
                 type="text"
