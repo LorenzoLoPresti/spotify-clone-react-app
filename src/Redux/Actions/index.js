@@ -112,6 +112,8 @@ export const artistFetchFunctionAction = (artist, genreFetch) => {
       );
       if (response.ok) {
         let data = await response.json();
+        // if (Object.keys(data).includes("error"))
+        //   throw new Error("artistFetch: data not found");
         dispatch(genreFetch(data));
       } else {
         alert("Inserisci almeno una lettera o un numero LOL");

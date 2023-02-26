@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   addFavouriteSongAction,
   removeFavouriteSongAction,
@@ -13,11 +13,10 @@ import { faHeart, faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
 const DetailsComponents = () => {
   const params = useParams();
   const dispatch = useDispatch();
-  const [fetchResult, setFetchResult] = useState();
+  const [fetchResult, setFetchResult] = useState({});
   const [loading, setLoading] = useState(true);
-  const playerData = useSelector((state) => state.player.selectedSong);
   const favouriteList = useSelector((state) => state.player.favouriteList);
-  console.log("erjgoawijafafwef", favouriteList);
+  const navigate = useNavigate();
 
   const durationConverter = (track) => {
     const minutes = Math.floor(
@@ -47,10 +46,16 @@ const DetailsComponents = () => {
       setLoading(false);
     }, 1000);
   };
+
   useEffect(() => {
     singleAlbumFetch(params.list);
-    console.log(fetchResult);
   }, []);
+
+  useEffect(() => {
+    if (fetchResult.error) {
+      navigate("/error");
+    }
+  }, [fetchResult, navigate]);
 
   return (
     <div className="col-12 col-md-9 offset-md-3 mainPage mt-4">
@@ -88,7 +93,7 @@ const DetailsComponents = () => {
                 className="artist-name"
                 style={{ fontSize: "1rem", fontWeight: "400" }}
               >
-                {fetchResult?.artist.name}
+                {fetchResult?.artist?.name}
               </p>
             </div>
             <div className="mt-4 text-center">
@@ -124,14 +129,12 @@ const DetailsComponents = () => {
                         {element.title}
                       </Col>
                       <Col xs={4}>
-                        {favouriteList.includes(element.title) ? (
+                        {favouriteList.includes(element.id) ? (
                           <FontAwesomeIcon
                             icon={faHeartCircleCheck}
                             className="text-success ps-5"
                             onClick={() => {
-                              dispatch(
-                                removeFavouriteSongAction(element.title)
-                              );
+                              dispatch(removeFavouriteSongAction(element.id));
                             }}
                           />
                         ) : (
@@ -140,7 +143,7 @@ const DetailsComponents = () => {
                             className="ps-5"
                             style={{ color: "grey" }}
                             onClick={() => {
-                              dispatch(addFavouriteSongAction(element.title));
+                              dispatch(addFavouriteSongAction(element.id));
                             }}
                           />
                         )}
