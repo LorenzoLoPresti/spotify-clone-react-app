@@ -17,7 +17,6 @@ const ArtistPageComponent = () => {
       );
       if (response.ok) {
         let data = await response.json();
-        console.log(data);
         setFetchResult(data);
       }
     } catch (error) {
@@ -25,11 +24,13 @@ const ArtistPageComponent = () => {
     }
     setTimeout(() => {
       setLoading(false);
+      console.log(params);
     }, 1000);
   };
   useEffect(() => {
     singleAlbumFetch(params.artist);
     console.log("coakfowek", fetchResult && fetchResult.data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
