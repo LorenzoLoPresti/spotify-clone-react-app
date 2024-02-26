@@ -1,6 +1,6 @@
 # Spotify-clone-react-app
 
-Seconda web-app realizzata in react.
+Seconda web-app realizzata in react durante il bootcamp Epicode.
 
 ![Preview](https://raw.githubusercontent.com/LorenzoLoPresti/images/main/spotify-clone-react-app/image1.png)
 
@@ -13,7 +13,7 @@ Seconda web-app realizzata in react.
 
 ## Descrizione
 
-L'utente può inserire il nome di una città e ottenere le previsioni atmosferiche del tempo attuale. Può inoltre visualizzare il tempo di alcune città del mondo di default.
+Realizzata l'interfaccia di main-page, artist-page e album-page di spotify. L'utente può cercare per artista o brano tramite la barra di ricerca. Il player non è funzionante.
 
 ## Start
 
